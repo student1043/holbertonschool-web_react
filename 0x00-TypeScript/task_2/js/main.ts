@@ -1,13 +1,13 @@
 interface DirectorInterface {
-    workFromHome: () => string;
-    getCoffeeBreak: () => string;
-    workDirectorTasks: () => string;
+    workFromHome(): string;
+    getCoffeeBreak(): string;
+    workDirectorTasks(): string;
 }
 
 interface TeacherInterface {
-    workFromHome: () => string;
-    getCoffeeBreak: () => string;
-    workDirectorTasks: () => string;
+    workFromHome(): string;
+    getCoffeeBreak(): string;
+    workDirectorTasks(): string;
 }
 
 class Director implements DirectorInterface {
@@ -34,8 +34,8 @@ class Teacher implements TeacherInterface {
     }
 }
 
-function createEmployee(salary: string | number) {
-    if (typeof(salary) == 'number' && salary < 500) {
+export function createEmployee(salary: string | number) {
+    if (typeof(salary) === 'number' && salary < 500) {
         return new Teacher;
     }
     else {
