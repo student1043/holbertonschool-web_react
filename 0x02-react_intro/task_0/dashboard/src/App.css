@@ -1,5 +1,5 @@
-.App {
-  text-align: center;
+body {
+  margin: 0%;
 }
 
 .App-logo {
@@ -9,14 +9,35 @@
 }
 
 .App-header {
-  background-color: rgba(255, 255, 255, 0);
-  min-height: 100vh;
-  display: block;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
+  background-color: white;
+  display: flex;
+  align-items: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #e41c3c;
+  border-bottom: 3.5px solid #e41c3c;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App-body p {
+  margin-top: 5%;
+  margin-left: 4%;
+  height: 30vmax;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 350;
+}
+
+.App-body {
+  border-bottom: 3.5px solid #e41c3c;
+  display: flex;
+  align-items: center;
+}
+
+.App-footer {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+
 }
 
 .App-link {
