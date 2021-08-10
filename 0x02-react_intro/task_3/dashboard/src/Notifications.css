@@ -1,0 +1,25 @@
+.Notifications {
+    padding: 1%;
+    border: 2.5px dashed #e41c3c;
+}
+
+p {
+    font-size: large;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+li[data-priority="default"] {
+    color: blue;
+}
+
+li[data-priority="urgent"] {
+    color: red;
+}
