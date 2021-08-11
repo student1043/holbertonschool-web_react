@@ -1,0 +1,19 @@
+/* Body CSS */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App-body {
+  height: 44vh;
+}
+
+.App-body p {
+  margin: 3rem 0rem 2rem 2rem;
+}
+
+/* Utils */
+hr {
+  margin: 0;
+  height: .2rem;
+  background-color: #E0344B;
+}
