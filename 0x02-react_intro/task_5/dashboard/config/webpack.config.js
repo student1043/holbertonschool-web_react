@@ -23,18 +23,17 @@ module.exports = {
             type: "asset",
           },
           {
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            use: [
-              {
-                loader: ImageMinimizerPlugin.loader,
-                options: {
-                  severityError: "warning",
-                  minimizerOptions: {
-                    plugins: ["gifsicle"],
-                  },
-                },
-              },
-            ],
+            test: /\.(gif|png|jpe?g|svg)$/i,
+				    use: [
+					      'file-loader',
+					      {
+						        loader: 'image-webpack-loader',
+						        options: {
+							        bypassOnDebug: true,
+							        disable: true,
+						},
+					},
+				],
           },
           {
             test: /\.(js|jsx)$/,
@@ -63,4 +62,8 @@ module.exports = {
         open: true,
         hot: true,
     },
+	  devtool: 'inline-source-map',
+	  performance: {
+    maxAssetSize: 100000
+  }
 };
