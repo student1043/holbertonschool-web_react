@@ -1,3 +1,5 @@
 import { fromJS } from 'immutable';
 
-export const getImmutableObject = (object) => fromJS(object);
+const getImmutableObject = (object) => fromJS(object);
+
+export default getImmutableObject;
