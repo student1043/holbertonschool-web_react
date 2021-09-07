@@ -15,4 +15,14 @@ describe('<NotificationItem />', () => {
       const wrapper = shallow(<NotificationItem html={{ __html: '<u>test</u>' }}/>);
       expect(wrapper).toHaveLength(1);
     });
+    it('Check spy OnClick', () => {
+      const wrapper = shallow(<NotificationItem />);
+      const spy = jest.fn();
+
+      wrapper.setProps({ value: 'test', markAsRead: spy, id: 999 })
+      wrapper.find('li').props().onClick();
+      expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledWith(999);
+      spy.mockRestore();
+    })
   });
