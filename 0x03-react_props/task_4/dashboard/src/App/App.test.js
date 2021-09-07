@@ -6,6 +6,7 @@ import Notifications from '../Notifications/Notifications'
 import Header from '../Header/Header'
 import Login from '../Login/Login'
 import Footer from '../Footer/Footer'
+import CourseList from '../CourseList/CourseList';
 
 configure({adapter: new Adapter()});
 describe('<App />', () => {
@@ -33,4 +34,16 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
 		expect(wrapper.contains(<Footer />)).toEqual(true);
 	});
+
+	it("<App /> renders <Footer />", () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.contains(<CourseList />)).toEqual(false);
+	});
+});
+
+describe("If isLogginIn is true", () => {
+	const wrapper = shallow(<App isLoggedIn={true} />);
+
+	expect(wrapper.contains(<Login />)).toEqual(false);
+	expect(wrapper.contains(<CourseList />)).toEqual(true);
 });

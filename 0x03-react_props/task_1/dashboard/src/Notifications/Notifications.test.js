@@ -16,6 +16,6 @@ describe('<Notifications />', () => {
   it('renders an <Notifications /> component and verifies text', () => {
     const wrapper = shallow(<Notifications />);
     expect(wrapper.find('.Notifications p')).toHaveLength(1);
-    expect(wrapper.find('.Notifications p').text()).toEqual('Here is the list of notifications')
+    expect(wrapper.find('.Notifications p').text()).toEqual('Here is the list of notifications');
 	});
 });
