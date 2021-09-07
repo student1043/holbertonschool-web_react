@@ -8,6 +8,7 @@ import CourseList from '../CourseList/CourseList';
 import PropTypes from 'prop-types';
 import { getLatestNotification } from '../utils/utils';
 
+
 const listCourses = [
   {id: 1, name: "ES6", credit: 60},
   {id: 2, name: "Webpack", credit: 20},
@@ -26,10 +27,10 @@ class App extends React.Component {
     this.LogoutKey = props.LogoutKey;
   }
   componentDidMount() {
-    window.addEventListener('keydown', this.LogoutKey);
+    document.addEventListener('keydown', this.LogoutKey);
   }
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.LogoutKey);
+    document.removeEventListener('keydown', this.LogoutKey);
   }
   LogoutKey(e) {
     if (e.ctrlKey && e.key === 'h') {
