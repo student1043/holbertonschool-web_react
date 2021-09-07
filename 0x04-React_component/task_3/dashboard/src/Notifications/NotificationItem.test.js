@@ -11,7 +11,7 @@ describe('<NotificationItem />', () => {
       const wrapper = shallow(<NotificationItem type="default" value="test"/>);
       expect(wrapper).toHaveLength(1);
     });
-    it('renders by passing dummy html prop' , () => {
+    it('redners by passing dummy html prop' , () => {
       const wrapper = shallow(<NotificationItem html={{ __html: '<u>test</u>' }}/>);
       expect(wrapper).toHaveLength(1);
     });
