@@ -46,4 +46,12 @@ describe("If isLogginIn is true", () => {
 
 	expect(wrapper.contains(<Login />)).toEqual(false);
 	expect(wrapper.contains(<CourseList />)).toEqual(false);
+	it('logOut', () => {
+		const LoggingOut = jest.fn(() => undefined);
+		shallow(<App logOut={logOut} />);
+		const spy = jest.spyOn(global, 'alert');
+		expect(spy);
+		expect(LoggingOut);
+		jest.restoreAllMocks();
+	  });
 });
