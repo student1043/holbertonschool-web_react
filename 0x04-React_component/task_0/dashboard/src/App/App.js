@@ -20,10 +20,14 @@ const listNotifications = [
   { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
 ];
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    const { isLoggedIn } = this.props;
     return (
-      <Fragment>
+      <React.Fragment>
         <Notifications listNotifications={listNotifications}/>
         <div className="App">
           <Header />
@@ -31,7 +35,7 @@ class App extends Component {
           {  isLoggedIn === true && <CourseList listCourses={listCourses} /> }
           <Footer />
         </div>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

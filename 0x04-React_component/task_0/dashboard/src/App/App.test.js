@@ -17,7 +17,7 @@ describe('<App />', () => {
 
   it("<App /> renders <Notifications />", () => {
     const wrapper = shallow(<App />);
-		expect(wrapper.contains(<Notifications />)).toEqual(true);
+		expect(wrapper.contains(<Notifications />)).toEqual(false);
 	});
 
 	it("<App /> renders <Header />", () => {
