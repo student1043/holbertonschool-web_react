@@ -3,7 +3,7 @@ import BodySection from './BodySection';
 import './BodySectionWithMarginBottom.css';
 import PropTypes from 'prop-types';
 
-class BodySectionWithMarginBottom extends Component {
+class BodySectionWithMarginBottom extends React.Component {
   constructor(props) {
       super(props);
   }
