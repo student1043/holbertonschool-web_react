@@ -13,6 +13,9 @@ class Notifications extends React.PureComponent {
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
+  shouldComponentUpdate(nextProps) {
+    return nextProps.length > this.props.listNotifications.length
+  }
   render() {
     const { displayDrawer, listNotifications } = this.props;
     return (
