@@ -1,13 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Login from '../Login/Login';
 import WithLogging from './WithLogging';
 
 describe('<withLogging />', () => {
   it('Console Log Checker', () => {
     const spy = jest.spyOn(console, 'log').mockImplementation();
-    const MyComponent = WithLogging(() => <p />);
-    const MyComponent = WithLogging(React.Component);
+    const Component = WithLogging(() => <p />);
+    const MyComponent = WithLogging(Component);
     const wrapper = shallow(<MyComponent />)
 
     expect(spy).toBeCalledTimes(1);
@@ -18,7 +17,7 @@ describe('<withLogging />', () => {
 
   it('Mounting and Unmounting Console Log', () => {
     const spy = jest.spyOn(console, 'log').mockImplementation();
-    const MyComponent = WithLogging(Login);
+    const MyComponent = WithLogging('Login');
     const wrapper = shallow(<MyComponent />)
 
     expect(spy).toBeCalledTimes(1);

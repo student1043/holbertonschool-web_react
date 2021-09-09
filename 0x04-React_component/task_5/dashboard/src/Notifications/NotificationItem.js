@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 class NotificationItem extends React.PureComponent {
   render() {
+    const { type, value, html, markAsRead, id } = this.props;
     if (value)
       return <li data-priority={type} onClick={() => markAsRead(id)}>{value}</li>;
     else
@@ -24,3 +25,5 @@ NotificationItem.propTypes = {
 NotificationItem.defaultProps = {
   type: "default"
 }
+
+export default NotificationItem;
