@@ -20,7 +20,7 @@ class Notifications extends React.PureComponent {
   render() {
     const { displayDrawer, listNotifications } = this.props;
     return (
-      <div className="Main">
+      <div className={css(styles.NotificationsBody)}>
               <div className="menuItem">
                   <p>Your notifications</p>
               </div>

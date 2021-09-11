@@ -1,16 +1,13 @@
 import React from 'react'
 import logo from '../assets/holberton-logo.jpg';
-import '../Header/Header.css';
 import { StyleSheet, css } from 'aphrodite';
 
 function Header() {
     return (
-      <div className="Header">
-        <div className={css(styles.AppHeader)}>
+        <header className={css(styles.AppHeader)}>
           <img src={logo} className={css(styles.AppHeaderImage)} alt="logo" />
           <h1 className={css(styles.AppHeaderH1)}>School dashboard</h1>
-        </div>
-    </div>
+        </header>
   );
 }
 
