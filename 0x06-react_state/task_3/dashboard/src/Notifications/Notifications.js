@@ -8,23 +8,12 @@ import { StyleSheet, css } from 'aphrodite';
 class Notifications extends Component {
   constructor(props) {
     super(props);
-    this.markAsRead = this.markAsRead.bind(this);
   }
-
-  shouldComponentUpdate(nextProps) {
-    return (
-      nextProps.listNotifications.length > this.props.listNotifications.length ||
-      nextProps.displayDrawer !== this.props.displayDrawer
-    );
-  }
-
-  markAsRead(id) { console.log(`Notification ${id} has been marked as read`); }
-
   shouldBeHidden() { return this.props.displayDrawer ? true : false; }
 
   render() {
     const { displayDrawer, listNotifications, handleDisplayDrawer,
-      handleHideDrawer, } = this.props;
+      handleHideDrawer, markNotificationAsRead } = this.props;
 
     const menuStyle = css(
       styles.menuItem,
@@ -56,7 +45,7 @@ class Notifications extends Component {
                 <p>Here is the list of notifications</p>
                 <ul className={css(styles.notificationsList)}>
                   {listNotifications.map(({ id, type, html, value }) => (
-                    <NotificationItem key={id} id={id} type={type} html={html} value={value} markAsRead={this.markAsRead} />)
+                    <NotificationItem key={id} id={id} type={type} html={html} value={value} markAsRead={markNotificationAsRead} />)
                   )}
                 </ul>
               </>
@@ -149,14 +138,16 @@ Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
-  handleHideDrawer: PropTypes.func
+  handleHideDrawer: PropTypes.func,
+  markNotificationAsRead: PropTypes.func
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
   handleDisplayDrawer: () => {},
-  handleHideDrawer: () => {}
+  handleHideDrawer: () => {},
+  markNotificationAsRead: () => {}
 };
 
 export default Notifications;

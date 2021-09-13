@@ -6,7 +6,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Header from './Header';
 import { StyleSheetTestUtils } from 'aphrodite';
-import AppContext, { user, logOut } from "../App/AppContext";
+import AppContext from "../App/AppContext";
 
 describe('<Header />', () => {
   let wrapper;

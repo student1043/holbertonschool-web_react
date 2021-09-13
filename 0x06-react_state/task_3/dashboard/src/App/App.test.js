@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import App from './App';
+import App, { listNotificationsState } from './App';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
@@ -121,5 +121,31 @@ describe('<App />', () => {
     expect(wrapper.state().user).toEqual(Logged);
     instance.logOut();
     expect(wrapper.state().user).toEqual({"email": "", "isLoggedIn": false, "password": ""});
+  });
+
+  it("markNotificationAsRead Working", () => {
+    const wrapper = mount(
+      <AppContext.Provider value={{ user, logOut }}>
+        <App />
+      </AppContext.Provider>
+    );
+
+    const instance = wrapper.instance();
+
+    expect(wrapper.state().listNotifications).toEqual(
+      listNotificationsState
+    );
+
+    instance.markNotificationAsRead(0);
+
+    expect(wrapper.state().listNotifications).toEqual(
+      listNotificationsState
+    );
+
+    instance.markNotificationAsRead(2);
+    expect(wrapper.state().listNotifications).toHaveLength(2);
+    expect(wrapper.state().listNotifications[1]).toEqual(
+      {"html": {"__html": "<strong>Urgent requirement</strong> - complete by EOD"}, "id": 3, "type": "urgent"}
+    );
   });
 });

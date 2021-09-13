@@ -16,6 +16,18 @@ const user = {
   isLoggedIn: false
 }
 
+const listCourses = [
+  { id: 1, name: 'ES6', credit: 60 },
+  { id: 2, name: 'Webpack', credit: 20 },
+  { id: 3, name: 'React', credit: 40 }
+];
+
+export const listNotificationsState = [
+  { id: 1, type: 'default', value: 'New course available' },
+  { id: 2, type: 'urgent', value: 'New resume available' },
+  { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,8 +36,10 @@ class App extends Component {
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
+    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = { displayDrawer: false, user: user,
-      logOut: this.logOut };
+      logOut: this.logOut,
+      listNotifications: listNotificationsState };
   }
 
   componentDidMount() {
@@ -41,6 +55,14 @@ class App extends Component {
       window.alert('Logging you out');
       this.props.logOut();
     }
+  }
+
+  markNotificationAsRead(id) {
+    this.setState({
+      listNotifications: this.state.listNotifications.filter((notif) => {
+        return notif.id !== id;
+      }),
+    });
   }
 
   handleDisplayDrawer() {
@@ -68,28 +90,18 @@ class App extends Component {
     const {
       user,
       logOut,
+      listNotifications,
     } = this.state;
     const value = { user, logOut };
 
-    const listCourses = [
-      { id: 1, name: 'ES6', credit: 60 },
-      { id: 2, name: 'Webpack', credit: 20 },
-      { id: 3, name: 'React', credit: 40 }
-    ];
-
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'New course available' },
-      { id: 2, type: 'urgent', value: 'New resume available' },
-      { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
-    ];
-
-    return (
+    return(
       <AppContext.Provider value={value}>
         <React.Fragment>
           <Notifications listNotifications={listNotifications}
           displayDrawer={this.state.displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
-          handleHideDrawer={this.handleHideDrawer}/>
+          handleHideDrawer={this.handleHideDrawer}
+          markNotificationAsRead={this.markNotificationAsRead}/>
           <div>
             <Header />
             <div className={css(styles.body)}>

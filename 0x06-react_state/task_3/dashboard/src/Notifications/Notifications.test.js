@@ -98,46 +98,6 @@ describe('<Notifications /> as pure component', () => {
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
 
-  it("should verify that when updating the props of the component with the same list, the component doesn’t rerender", () => {
-    const shouldComponentUpdateSpy = jest.spyOn(
-      Notifications.prototype,
-      "shouldComponentUpdate"
-    );
-
-    const listNotifications = [
-      { id: 1, type: "default", value: "New course available" }
-    ];
-
-    const wrapper = shallow(
-      <Notifications displayDrawer listNotifications={listNotifications} />
-    );
-
-    wrapper.setProps({ listNotifications: listNotifications });
-    expect(shouldComponentUpdateSpy).toHaveReturnedWith(false);
-    jest.restoreAllMocks();
-  });
-
-  it("should verify that when updating the props of the component with a longer list, the component does rerender", () => {
-    const shouldComponentUpdateSpy = jest.spyOn(
-      Notifications.prototype,
-      "shouldComponentUpdate"
-    );
-
-    const wrapper = shallow(
-      <Notifications displayDrawer />
-    );
-
-    wrapper.setProps({
-      listNotifications: [
-        { id: 1, type: "default", value: "New course available" },
-        { id: 2, type: "default", value: "New resume available" }
-      ]
-    });
-
-    expect(shouldComponentUpdateSpy).toHaveReturnedWith(true);
-    jest.restoreAllMocks();
-  });
-
   it('Click on MenuItem Will Fire Display Drawer', () => {
     const handleDisplayDrawer = jest.fn();
     const handleHideDrawer = jest.fn();
