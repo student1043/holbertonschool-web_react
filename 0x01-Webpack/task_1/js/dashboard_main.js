@@ -7,10 +7,13 @@ $('body').append('<button>Click here to get started</button>');
 $('body').append('<p id="count"></p>');
 $('body').append('<p>Copyright - Holberton School</p>');
 
-let counter = 0;
 
-function updateCounter() {
-  counter += 1;
-  $("#count").html(`${counter} clicks on the button`);
-};
-$('button').on('click', _.debounce(updateCounter, 999));
+const updateCounter = (function () {
+    let count = 0;
+    return function () {
+      count += 1;
+      $('#count').text(`${count} clicks on the button`);
+    };
+  })();
+
+$('button').on('click', _.debounce(updateCounter, 500));
